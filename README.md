@@ -1,3 +1,73 @@
+# Modern React with Redux [2020 Update]
+
+* Get current node version
+
+`node -v`
+
+
+* Install the tool that will help us create new React Apps
+
+    * `npm install -g create-react-app`
+      * `npm` node package manager, just like composer for php
+      * `install` the command to install new packages
+      * `-g` install the package globaly so we can use the terminal to create new apps
+      * `create-react-app` the package name [reade more](https://github.com/facebook/create-react-app)
+
+
+* After installing `create-react-app` globaly, we can create new app via the command line:
+
+    * We can use this command:
+    `create-react-app modern-react-with-redux`
+
+    * Or this command:
+    `npx create-react-app modern-react-with-redux`
+      * `npx` comes with npm 5.2+ and higher
+
+
+* `npm start`
+    * This command will start our app which will be available on: `http://localhost:3000`
+
+* **Babel**: is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments.
+
+## Lesson 9
+
+* `/src/index.js`
+  * Import the React and ReactDOM libraries
+    ```
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    ```
+      * `import`: We want to get code from other file or dependency
+      * `React`, `ReactDOM`... : The variable we want to assign this import to
+      * `from`: We are about to specify the name of the library or file we are importing from
+      * `react`, `react-dom`... : The name of the dependency **or** path to the file we are importing
+      
+* `import` / `require`
+  * `import` is used with ES2015 modules
+  * `require` is used with CommonJS modules
+
+## Lesson 10
+
+* A component is: `function` or `Class`
+  * produces HTML to show to the user (using JSX)
+  * and handles feedback from the user (using Event Handlers)
+
+* Example of function component:
+
+```
+const App = () => {
+  return <div> Hi there!</div>;
+}
+
+ReactDOM.render(
+  <App />,
+  document.querySelector("#root"); 
+);
+  
+```
+
+# Original README.md Content 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
