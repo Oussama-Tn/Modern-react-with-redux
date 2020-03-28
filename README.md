@@ -66,6 +66,118 @@ ReactDOM.render(
   
 ```
 
+
+## Lesson 11
+
+* An example of JSX transformed to JS using babel.
+
+## Lesson 12
+
+* JSX
+  * Special dialect of JS (its not HTML!)
+  * Browsers don't understand JSX code! We write JSX then run tools to turn it into normal JS
+  * Very similar in form and function to HTML with couple differences
+
+* There is a convention for writing multiline JSX
+  * Add parentheses after `return` and start JSX on new line
+  ``` 
+  return (
+    <div>
+        <label for="name">Enter name</label>
+        <input id="name" type="text" />
+    </div>
+  );
+  ```
+
+## Lesson 13 to Lesson 18
+
+* JSX VS HTML
+  * Adding custom styling to an element uses different syntax
+    * HTML
+    
+    `<div style="background-color:red;"></div>"`
+    * JSX style is an object: replace `kebab-case` keys with `camelCase` and add quotes to values (String)
+    
+    `<div style={{backgroundColor:'red'}}></div>"`
+  * Adding class to an element uses different syntax
+    * HTML
+    
+    `<div class="example"></div>`
+    * JSX: we use `className` instead of `class`
+
+    `<div className ="example"></div>`
+    
+  * JSX can reference JS variables
+    * We can print JS variables inside JSX block. 
+      * Example1: `buttonText`
+      ``` 
+      const buttonText = 'Click me!';
+      
+      return (
+        <div>
+            <label for="name">Enter name</label>
+            <input id="name" type="text" />
+            
+            <button> {buttonText} </button>
+        </div>
+      );
+      ```
+      * Example2: `getButtonText()`
+      ``` 
+      function getButtonText() {
+        return 'Click on me!';
+      }
+      
+      const App = () => {
+          return (
+            <div>
+                <label for="name">Enter name</label>
+                <input id="name" type="text" />
+                
+                <button> {getButtonText()} </button>
+            </div>
+          );
+      };
+      ```
+      * PS: we can print content `{buttonText}` if its value is an `Array` or `String` but when it's an object we must get valid element inside this object 
+        ```
+        // example: 
+        buttonText = {'title': 'something'}
+        // valid inside JSX
+        {buttonText.title} 
+        // the following will throw an error: Objects are not a valid React child...
+        {buttonText}
+        ```
+  * Attribute name `for` will throw a warning => we must use `htmlFor'
+     ```
+     // Wrong
+     const App = () => {
+         return (
+           <div>
+               <label for="name">Enter name</label>
+               <input id="name" type="text" />
+               
+               <button> {getButtonText()} </button>
+           </div>
+         );
+     };
+     ```
+
+     ```
+     // Right
+     const App = () => {
+         return (
+           <div>
+               <label htmlFor="name">Enter name</label>
+               <input id="name" type="text" />
+               
+               <button> {getButtonText()} </button>
+           </div>
+         );
+     };
+     ```
+
+
 # Original README.md Content 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
