@@ -217,6 +217,39 @@ return (
 );
 ```
 
+## Lesson 29
+
+* `props` (properties)
+  * System for passing data from a **parent** component to a **child** component
+  * => Goal is to **customize** or **configure** a child component
+
+* Providing `props` from parent to child
+ 
+   ```
+   <CommentDetail author="Oussama" />
+   ```
+   * `author` : name of the prop
+   * `Oussama` : Value of the prop
+     * We could pass a var instead of hardcoded string `   <CommentDetail author={someVar} />` 
+
+* Consume `props` in child component
+    
+    ``` 
+    const CommentDetail = props => {
+    
+      return (
+          <div>
+            <span>{props.author}</span>
+          </div>
+      );
+    
+    };
+    ```
+
+
+
+
+
 # Original README.md Content 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
