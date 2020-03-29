@@ -340,9 +340,25 @@ const App = () => {
     - 6 - We get result of geolocation !
       - => So the problem is that our content is rendered then the result of geolocation come later in time !!! That's why we need **class component** in conjunction with **react's state system** !
 
+## Lesson 47 
 
-
-
+* Rules of Class Component
+  * Must be a javascript Class (ES2015)
+  * Must extend (subclass) `React.Component`
+  * Must define `render` method that returns some amount of JSX
+  
+    ``` 
+    class App extends React.Component {
+      render() {
+        window.navigator.geolocation.getCurrentPosition(
+            position => console.log(position),
+            err => console.log(err)
+        );
+    
+        return <div>Latitude: </div>
+      }
+    }
+    ```
 
 
 
