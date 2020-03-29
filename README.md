@@ -318,8 +318,27 @@ return (
 `npx create-react-app 2-second-project`
 
 
+## Lesson 46
 
+```
+const App = () => {
+  window.navigator.geolocation.getCurrentPosition(
+      position => console.log(position),
+      err => console.log(err)
+  );
 
+  return <div>Latitude: </div>
+};
+```
+
+  * Execution of our application explained in timeline
+    - 1 - JS file loaded by browser
+    - 2 - App component gets created
+    - 3 - We call geolocation service **=> takes time to get results!!!**
+    - 4 - App returns JSX, gets rendered to page HTML
+    - 5 - ...
+    - 6 - We get result of geolocation !
+      - => So the problem is that our content is rendered then the result of geolocation come later in time !!! That's why we need **class component** in conjunction with **react's state system** !
 
 
 
