@@ -178,6 +178,45 @@ ReactDOM.render(
      ```
 
 
+## Lesson 25 
+
+* Install faker library
+
+    ```
+    npm install --save faker
+    ```
+
+  * `--save` : will save the library into our project (added to `package.json` file)
+
+* To use faker library:
+
+    ```
+    // import the lib
+    import faker from 'faker';
+    
+    ....
+    // Inside JSX
+    <img src={faker.image.avatar} />
+    
+    ```
+    * [Faker documentation](https://github.com/marak/Faker.js/)
+
+## Lesson 28
+
+* Component nesting
+  * `import` : `import CommentDetail form './CommentDetail';`
+  * `export` : `export default CommentDetail;`
+  
+* If we want to show a component inside another we're gonna treat it as it was a JSX tag `<CommentDetail />`
+
+```
+return (
+    <div>
+        <CommentDetail />
+    </div>
+);
+```
+
 # Original README.md Content 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
