@@ -296,6 +296,37 @@ return (
     ```
 
 
+## Lesson 41
+
+* Components:
+  * **Functional Components**
+    * Good for simple components
+  * **Class Components**
+    * Good for everything else
+      * Easier code organization
+      * Can use `state` => Easier to handle user input
+      * Understands lifecycle events => Easier to do things when the app first starts
+    
+
+## Lesson 42
+
+* App Challenges (/2-second-project)
+  * Need to get the users physical location
+  * Need to determine the current month
+  * Need to change text and styling based on location + month
+
+`npx create-react-app 2-second-project`
+
+
+
+
+
+
+
+
+
+
+
 
 # Original README.md Content 
 
