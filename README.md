@@ -33,7 +33,7 @@
 
 * `/src/index.js`
   * Import the React and ReactDOM libraries
-    ```
+    ```javascript
     import React from 'react';
     import ReactDOM from 'react-dom';
     ```
@@ -54,7 +54,7 @@
 
 * Example of function component:
 
-```
+```javascript
 const App = () => {
   return <div> Hi there!</div>;
 }
@@ -80,7 +80,7 @@ ReactDOM.render(
 
 * There is a convention for writing multiline JSX
   * Add parentheses after `return` and start JSX on new line
-  ``` 
+  ```javascript
   return (
     <div>
         <label for="name">Enter name</label>
@@ -110,7 +110,7 @@ ReactDOM.render(
   * JSX can reference JS variables
     * We can print JS variables inside JSX block. 
       * Example1: `buttonText`
-      ``` 
+      ```javascript
       const buttonText = 'Click me!';
       
       return (
@@ -123,7 +123,7 @@ ReactDOM.render(
       );
       ```
       * Example2: `getButtonText()`
-      ``` 
+      ```javascript
       function getButtonText() {
         return 'Click on me!';
       }
@@ -140,7 +140,7 @@ ReactDOM.render(
       };
       ```
       * PS: we can print content `{buttonText}` if its value is an `Array` or `String` but when it's an object we must get valid element inside this object 
-        ```
+        ```javascript
         // example: 
         buttonText = {'title': 'something'}
         // valid inside JSX
@@ -149,7 +149,7 @@ ReactDOM.render(
         {buttonText}
         ```
   * Attribute name `for` will throw a warning => we must use `htmlFor'
-     ```
+     ```javascript
      // Wrong
      const App = () => {
          return (
@@ -163,7 +163,7 @@ ReactDOM.render(
      };
      ```
 
-     ```
+     ```javascript
      // Right
      const App = () => {
          return (
@@ -182,7 +182,7 @@ ReactDOM.render(
 
 * Install faker library
 
-    ```
+    ```bash
     npm install --save faker
     ```
 
@@ -190,11 +190,11 @@ ReactDOM.render(
 
 * To use faker library:
 
-    ```
+    ```javascript
     // import the lib
     import faker from 'faker';
     
-    ....
+    // ....
     // Inside JSX
     <img src={faker.image.avatar} />
     
@@ -209,7 +209,7 @@ ReactDOM.render(
   
 * If we want to show a component inside another we're gonna treat it as it was a JSX tag `<CommentDetail />`
 
-```
+```javascript
 return (
     <div>
         <CommentDetail />
@@ -225,7 +225,7 @@ return (
 
 * Providing `props` from parent to child
  
-   ```
+   ```jsx harmony
    <CommentDetail author="Oussama" />
    ```
    * `author` : name of the prop
@@ -234,7 +234,7 @@ return (
 
 * Consume `props` in child component
     
-    ``` 
+    ```javascript
     const CommentDetail = props => {
     
       return (
@@ -251,7 +251,7 @@ return (
 
 * Component reuse (ApprovalCard)
 
-    ``` 
+    ```javascript
     const ApprovalCard = (props) => {
       return (
           <div className="ui card">
@@ -269,7 +269,7 @@ return (
     };
     ```
     * In following code, `CommentDetail` will be nested inside `ApprovalCard`: `{props.children}`
-    ``` 
+    ```jsx harmony
     <ApprovalCard>
       <CommentDetail
           author="Oussama"
@@ -280,13 +280,13 @@ return (
     </ApprovalCard>
     ```
     * We can also use `ApprovalCard` this way:
-    ``` 
+    ```jsx harmony
     <ApprovalCard>
         Are you sure you want to do this?
     </ApprovalCard>
     ```
     
-    ``` 
+    ```jsx harmony
     <ApprovalCard>
         <div> 
             <h4>Warning!</h4>  
@@ -320,7 +320,7 @@ return (
 
 ## Lesson 46
 
-```
+```javascript
 const App = () => {
   window.navigator.geolocation.getCurrentPosition(
       position => console.log(position),
@@ -347,7 +347,7 @@ const App = () => {
   * Must extend (subclass) `React.Component`
   * Must define `render` method that returns some amount of JSX
   
-    ``` 
+    ```javascript
     class App extends React.Component {
       render() {
         window.navigator.geolocation.getCurrentPosition(
@@ -370,12 +370,65 @@ const App = () => {
   * State must be initialized when a component is created
   * State can **ONLY** be updated using the function `setState`
 
+## Lesson 49
 
+* [Adding local state to a class](https://reactjs.org/docs/state-and-lifecycle.html#adding-local-state-to-a-class)
 
+```javascript
+class App extends React.Component {
+  constructor () {
+    super(props)
+  }
+  
+  render() {
+    window.navigator.geolocation.getCurrentPosition(
+        position => console.log(position),
+        err => console.log(err)
+    );
 
+    return <div>Latitude: </div>
+  }
+}
+```
 
+* The [constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor) method is a special method for creating and initializing an object created within a class.
+  * A constructor enables you to provide any custom initialization that must be done before any other methods can be called on an instantiated object.
+* The [super](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super) keyword is used to access and call functions on an object's parent.
 
+## Lesson 50
 
+* IMPORTANT: 
+  * We update our stat using `setState()`
+  * We only use `this.state = {}` when defining initial state
+
+* In lesson 48 we said:
+  * State must be initialized when a component is created
+  * State can **ONLY** be updated using the function `setState`
+
+```javascript
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    // THIS IS THE ONLY TIME we do direct assignment
+    // to this.state
+    this.state = {lat: null};
+
+    window.navigator.geolocation.getCurrentPosition(
+        position => {
+          // we called setState !!! NOT this.state.lat = .... !!!
+          this.setState({lat: position.coords.latitude})
+        },
+        err => console.log(err)
+    );
+
+  }
+
+  render() {
+    return <div>Latitude: {this.state.lat}</div>
+  }
+}
+```
 
 
 # Original README.md Content 
