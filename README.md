@@ -247,6 +247,53 @@ return (
     ```
 
 
+## Lesson 35
+
+* Component reuse (ApprovalCard)
+
+    ``` 
+    const ApprovalCard = (props) => {
+      return (
+          <div className="ui card">
+            <div className="content">
+              {props.children}
+            </div>
+            <div className="extra content">
+              <div className="ui two buttons">
+                <div className="ui basic green button">Approve</div>
+                <div className="ui basic red button">Decline</div>
+              </div>
+            </div>
+          </div>
+      )
+    };
+    ```
+    * In following code, `CommentDetail` will be nested inside `ApprovalCard`: `{props.children}`
+    ``` 
+    <ApprovalCard>
+      <CommentDetail
+          author="Oussama"
+          timeAgo="Today at 6:00AM"
+          content="Nice blog post!"
+          avatar={faker.image.avatar()}
+      />
+    </ApprovalCard>
+    ```
+    * We can also use `ApprovalCard` this way:
+    ``` 
+    <ApprovalCard>
+        Are you sure you want to do this?
+    </ApprovalCard>
+    ```
+    
+    ``` 
+    <ApprovalCard>
+        <div> 
+            <h4>Warning!</h4>  
+            Are you sure you want to do this?
+        </div>
+    </ApprovalCard>
+    ```
 
 
 
